@@ -1,0 +1,22 @@
+#include "reg52.h"
+
+sbit LED1=P2^0;//定义LED1为P2.0管脚
+
+typedef unsigned int u16;//重命名无符号整型为u16，表示该变量是16位的无符号整型数据
+typedef unsigned char u8;//重命名无符号字符型为u8,表示该变量是8位的无符号字符型数据
+
+void delay_10us(u16 ten_us)//使用循环函数来实现延时功能，但是不准确
+{
+	while(ten_us--);
+}
+
+void main()
+{
+	while(1)
+	{
+		LED1=0;//亮
+		delay_10us(60000);
+		LED1=1;//灭
+		delay_10us(60000);
+	}
+}
