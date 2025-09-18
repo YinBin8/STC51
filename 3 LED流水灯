@@ -1,0 +1,25 @@
+#include "reg51.h"
+
+#define LED_PROT P2 //宏定义P2端口，包括8个
+//sbit LED_PORT=P2;//现象是无流水灯
+
+typedef unsigned int u16;//重命名无符号整型为u16，表示一个16位的无符号整型变量
+typedef unsigned char u8;//重命名无符号字符型为u8,表示一个8位的无符号字符型变量
+
+void delay_10us(u16 j)
+{
+	while(j--);
+}
+
+void main()
+{
+	u8 i=0;
+	while(1)
+	{
+		for(i=0;i<8;i++)
+		{
+			LED_PROT=~(0x01<<i);//将1左移i位后取反赋值给LED_PORT
+			delay_10us(50000);
+		}
+	}
+}
