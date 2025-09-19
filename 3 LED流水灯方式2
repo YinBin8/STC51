@@ -22,7 +22,7 @@ void main()
 	{
 		for(i=0;i<7;i++)
 		{
-			LED_PROT=_crol_(LED_PROT,1);//_crol_左移函数，最高位被移到对低位，此高位变为最高位
+			LED_PROT=_crol_(LED_PROT,1);//_crol_左移函数，最高位被移到最低位，次高位变为最高位
 			delay_10us(50000);
 		}
 	}
