@@ -1,0 +1,26 @@
+#include "reg52.h"
+
+typedef unsigned int u16;//重命名无符号整型为u16，表示一个16位的无符号整型变量
+typedef unsigned char u8;//重命名无符号字符型为u8，表示一个8位的无符号字符型变量
+
+sbit BEEP=P2^5;//将P2.5管脚定义为BEEP
+
+void delay(u16 j)//延时函数
+{
+	while(j--);
+}
+
+void main()
+{
+	u16 i=2000;//控制蜂鸣器鸣响时长
+	
+	while(1)
+	{
+		while(i--)//产生一定频率的脉冲信号
+		{
+			BEEP=!BEEP;
+			delay(10);
+		}
+		i=0;//停止发声
+	}
+}
