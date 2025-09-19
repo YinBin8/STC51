@@ -1,0 +1,30 @@
+#include "reg51.h"
+#include "intrins.h"//包含左移右移函数的头文件
+
+#define LED_PROT P2 //宏定义P2端口，包括8个
+
+typedef unsigned int u16;//重命名无符号整型为u16，表示一个16位的无符号整型变量
+typedef unsigned char u8;//重命名无符号字符型为u8,表示一个8位的无符号字符型变量
+
+void delay_10us(u16 j)
+{
+	while(j--);
+}
+
+void main()
+{
+	u8 i=0;
+	
+	LED_PROT=~0x01;
+	delay_10us(50000);
+	
+	while(1)
+	{
+		for(i=0;i<7;i++)
+		{
+			LED_PROT=_crol_(LED_PROT,1);//_crol_左移函数，最高位被移到对低位，此高位变为最高位
+			delay_10us(50000);
+		}
+	}
+	
+}
