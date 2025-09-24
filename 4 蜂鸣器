@@ -15,7 +15,7 @@ void main()
 	u16 i=2000;//控制蜂鸣器鸣响时长
 	
 	while(1)
-	{
+	{              //i是一个无符号整型，不知道它的返回值是什么，如果返回的值一直是个正数，那就永远无法退出循环
 		while(i--)//产生一定频率的脉冲信号
 		{
 			BEEP=!BEEP;
@@ -23,31 +23,4 @@ void main()
 		}
 		i=0;//停止发声
 	}
-}
-
-
-//错误代码示范
-//现象是蜂鸣器一直响
-#include "reg52.h"
-
-sbit BEEP=P2^5;
-
-typedef unsigned int u16;
-typedef unsigned char u8;
-
-
-void delay(u16 j)
-{
-	while(j--);
-}
-
-void main()
-{
-	u16 i=2;
-
-		while(i--)//i是一个无符号整型，不知道它的返回值是什么，如果返回的值一直是个正数，那就永远无法退出循环
-		{
-			BEEP=!BEEP;
-			delay(50);
-		}
 }
